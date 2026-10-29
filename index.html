@@ -277,8 +277,8 @@
   </div>
 
   <div class="meta-row">
-    <span><b>Effective date:</b> <span class="placeholder">DD Month YYYY</span></span>
-    <span><b>Applies to:</b> Campus Connect Android app (package <code>in.ac.mnit.gatepass</code>)</span>
+    <span><b>Effective date:</b> 29 October 2026</span>
+    <span><b>Applies to:</b> Campus Connect for Android (package <code>in.ac.mnit.gatepass</code>) and iOS (bundle ID <code>in.ac.mnit.gatepass.ios</code>)</span>
     <span><b>Version:</b> 1.0</span>
   </div>
 
@@ -302,32 +302,27 @@
     </ol>
   </nav>
 
-  <div class="callout">
-    <b>Before publishing:</b> the fields shown like <span class="placeholder">this</span> are placeholders — an effective date and a real institute contact/grievance channel need to be filled in by whoever at MNIT owns this rollout before the link goes into the Play Console listing.
-  </div>
-
-
   <section id="scope">
     <h2><span class="n">01</span> Scope &amp; who this covers</h2>
     <p>Campus Connect is a campus access and anti-proxy attendance system built for Malaviya National Institute of Technology (MNIT) Jaipur. It replaces manual attendance registers and gate logs with a rotating QR code that a student's phone generates, which guards scan at campus and hostel gates.</p>
-    <p>This policy explains what information the Campus Connect Android app and its backend collect, why, who can see it, and how long it's kept. It applies to students, guards, hostel wardens, and administrators who use the app as part of their role at the Institute.</p>
+    <p>This policy explains what information the Campus Connect Android and iOS apps and their backend collect, why, who can see it, and how long it's kept. It applies to students, guards, hostel wardens, and administrators who use the app as part of their role at the Institute.</p>
     <p class="soft">Campus Connect is an institutional system issued to you as a member of MNIT — it is not a consumer app you can use independently of the Institute, and access requires an active MNIT identity.</p>
   </section>
 
   <section id="controller">
     <h2><span class="n">02</span> Who operates Campus Connect</h2>
-    <p>Campus Connect is operated by <span class="placeholder">[Institute department / student body name]</span> on behalf of Malaviya National Institute of Technology Jaipur, Jaipur, Rajasthan, India. The Institute is the data controller for the information described below; the development team builds and maintains the app under the Institute's direction.</p>
+    <p>Campus Connect is operated by the Office of Dean Student Welfare on behalf of Malaviya National Institute of Technology Jaipur, Jaipur, Rajasthan, India. The Institute is the data controller for the information described below; the development team builds and maintains the app under the Institute's direction.</p>
   </section>
 
   <section id="collect">
     <h2><span class="n">03</span> Information we collect</h2>
-    <p>Campus Connect does not have open sign-up — every account is created from the official Institute roster before you ever log in, and sign-in is restricted to your <b>@mnit.ac.in</b> Google account. The table below lists what the app and its backend hold once you're on that roster.</p>
+    <p>Campus Connect does not have open sign-up — every account is created from the official Institute roster before you ever log in, and you sign in with your college ID and a password you set for the app (using the password-reset link sent to your MNIT email). The table below lists what the app and its backend hold once you're on that roster.</p>
 
     <h3>Account &amp; roster information</h3>
     <div class="table-wrap">
       <table class="data">
         <tr><th>Data</th><th>Source</th><th>Why we hold it</th></tr>
-        <tr><td>Name, MNIT email address</td><td>Google Sign-In (restricted to mnit.ac.in) and Institute roster</td><td>Identify your account and match it to your roster entry</td></tr>
+        <tr><td>Name, MNIT email address</td><td>Institute roster</td><td>Identify your account and match it to your roster entry</td></tr>
         <tr><td>College ID / roll number, role (student, guard, warden, admin), hostel and room</td><td>Institute roster, imported by an administrator</td><td>Route you to the right screens and scope access correctly (e.g. a warden only sees their own hostel)</td></tr>
         <tr><td>Profile photo</td><td>Institute roster</td><td>Shown to the guard at a gate scan, so they can visually confirm it's you</td></tr>
       </table>
@@ -343,7 +338,15 @@
         <tr><td>Disputes you raise against a flagged record</td><td>You, submitted in-app</td><td>Let you contest a record you believe is wrong</td></tr>
       </table>
     </div>
-    <p class="soft">Campus Connect does not track your phone's GPS location or your movement in real time. It only knows you passed a specific, fixed gate or facility scan point at the moment a guard scans your code there.</p>
+    <p class="soft">Campus Connect does not track your movement continuously or in the background. Apart from Mark Attendance (below), it only knows you passed a specific, fixed gate or facility scan point at the moment a guard scans your code there.</p>
+
+    <h3>Location (Mark Attendance)</h3>
+    <div class="table-wrap">
+      <table class="data">
+        <tr><th>Data</th><th>Source</th><th>Why we hold it</th></tr>
+        <tr><td>Your phone's precise location (latitude and longitude), whether it falls inside the campus boundary, the nearest campus building, and whether the device reports the location as mocked or spoofed</td><td>Your phone, read once each time you tap <b>Mark Attendance</b> (available from 10:15 PM), only while the app is open</td><td>Let your warden confirm you are on campus or in your hostel at night, and flag it for review if you are not. Only your latest report is kept; each new one replaces the previous.</td></tr>
+      </table>
+    </div>
 
     <h3>Device &amp; security data</h3>
     <div class="table-wrap">
@@ -351,6 +354,7 @@
         <tr><th>Data</th><th>Source</th><th>Why we hold it</th></tr>
         <tr><td>A randomly generated device identifier, bound to your account</td><td>Generated by the app on first sign-in</td><td>Enforce one active phone per student, so a QR code can't be shared to a second device</td></tr>
         <tr><td>A private rotating-code secret</td><td>Generated by the backend, sent to your device once</td><td>Lets your phone generate a new QR code roughly every 30 seconds without contacting the server each time — this is what makes a screenshot of your QR code useless a moment later</td></tr>
+        <tr><td>Your sign-in password</td><td>Set by you through the password-reset email</td><td>Verify your sign-in. Stored on the server only as a salted one-way hash, never as plain text</td></tr>
         <tr><td>Sign-in session tokens</td><td>Generated at login, refreshed periodically</td><td>Keep you signed in without re-entering credentials constantly; tokens expire and rotate on a short cycle</td></tr>
       </table>
     </div>
@@ -371,11 +375,11 @@
         <p>Required for the app to talk to the Campus Connect backend — signing in, generating codes, submitting scans, and syncing records.</p>
       </div>
       <div class="role-card">
-        <div class="role-name">Notifications</div>
-        <p>Used to alert wardens to flagged records (e.g. a student who missed curfew) that need review.</p>
+        <div class="role-name">Location</div>
+        <p>Used only when a student taps Mark Attendance, to read the phone's precise location once and check whether they are on campus or in their hostel. The app does not read your location in the background. If you deny the permission, Mark Attendance cannot record your location.</p>
       </div>
     </div>
-    <p class="soft">Campus Connect does not request access to your contacts, SMS, call log, photos/media beyond what's needed to display your own profile photo, or precise/background location.</p>
+    <p class="soft">Campus Connect does not request access to your contacts, SMS, call log, or photos/media beyond what's needed to display your own profile photo, and it never reads your location in the background.</p>
   </section>
 
   <section id="use">
@@ -383,7 +387,7 @@
     <ul>
       <li><b>Operating the core system</b> — verifying identity at sign-in, generating and validating rotating QR codes, recording gate and facility movement, and preventing a code from being reused (replay protection).</li>
       <li><b>Preventing proxy attendance</b> — the entire point of the device-binding and rotating-code design is to make it impractical for someone else to check a student in or out on their behalf.</li>
-      <li><b>Hostel and campus safety workflows</b> — flagging missed curfews or unresolved exits so a warden can follow up, and letting students submit leave requests or disputes.</li>
+      <li><b>Hostel and campus safety workflows</b> — flagging missed curfews or unresolved exits so a warden can follow up, checking the location you report with Mark Attendance, and letting students submit leave requests or disputes.</li>
       <li><b>Administration</b> — roster management, resetting a lost or replaced device, and generating aggregate reports (e.g. gate traffic load) for the Institute.</li>
       <li><b>Security and troubleshooting</b> — audit logs and operational logs described above.</li>
     </ul>
@@ -400,11 +404,11 @@
       </div>
       <div class="role-card">
         <div class="role-name">Wardens</div>
-        <p>See movement, flag, and leave records only for students in their own hostel — not campus-wide.</p>
+        <p>See movement, flag, leave, and reported-location records only for students in their own hostel — not campus-wide.</p>
       </div>
       <div class="role-card">
         <div class="role-name">Administrators</div>
-        <p>Manage the roster and system configuration, and can access records and audit logs as needed to operate Campus Connect for the Institute.</p>
+        <p>Manage the roster and system configuration, and can access records, reported locations, and audit logs as needed to operate Campus Connect for the Institute.</p>
       </div>
       <div class="role-card">
         <div class="role-name">You</div>
@@ -416,13 +420,13 @@
   <section id="sharing">
     <h2><span class="n">07</span> Sharing &amp; third parties</h2>
     <p>We do not sell your data, and we do not share it outside the Institute for marketing or advertising purposes.</p>
-    <p>Campus Connect uses <b>Google Sign-In</b> to verify your identity against your MNIT Google account. Google processes your sign-in under its own privacy policy; Campus Connect only receives your verified name and email address from that process.</p>
-    <p>Campus Connect data is hosted on <span class="placeholder">[Institute-provided server infrastructure / hosting provider name]</span>. We may disclose information where required by law, or to protect the safety and integrity of the campus access system.</p>
+    <p>You sign in with your college ID and a password you set for the app. Password-reset emails are sent to your MNIT email address.</p>
+    <p>Campus Connect data is hosted on an MNIT campus server. We may disclose information where required by law, or to protect the safety and integrity of the campus access system.</p>
   </section>
 
   <section id="retention">
     <h2><span class="n">08</span> Retention</h2>
-    <p>Movement, flag, and leave records are retained for <span class="placeholder">[retention period — to be set by the Institute]</span> to support hostel administration and safety review, after which they are deleted or anonymized. Account and roster data is retained for as long as you're an active member of the Institute, and removed after you leave in line with Institute record-keeping policy.</p>
+    <p>Movement, flag, and leave records are retained for as long as needed to support hostel administration and safety review, in line with Institute record-keeping policy, after which they are deleted or anonymized. Your most recently reported location (see Section 03) is kept as a single record that is replaced each time you mark attendance; earlier locations are not kept. Account and roster data is retained for as long as you're an active member of the Institute, and removed after you leave in line with Institute record-keeping policy.</p>
     <p class="soft">A rotating-code secret used to scan is discarded automatically shortly after use — it is not kept once a code has been checked.</p>
   </section>
 
@@ -432,7 +436,7 @@
       <li>All traffic between the app and the backend is encrypted in transit.</li>
       <li>QR codes rotate roughly every 30 seconds and cannot be reused once scanned — a screenshot or a reused code is rejected.</li>
       <li>Each account is bound to a single device at a time; a lost or replaced phone requires an administrator to reset the binding.</li>
-      <li>Sign-in sessions use short-lived tokens that are rotated regularly rather than long-lived passwords stored on the device.</li>
+      <li>Your password is stored on the server only as a salted one-way hash, and sign-in sessions use short-lived tokens that are rotated regularly.</li>
       <li>Access to student records is restricted by role, enforced on the backend rather than trusted to the app alone.</li>
     </ul>
     <p class="soft">No system is perfectly secure, but Campus Connect is designed so that no single compromised device or screenshot is enough to falsify an attendance record.</p>
@@ -452,7 +456,7 @@
   <section id="deletion">
     <h2><span class="n">11</span> Request account &amp; data deletion</h2>
     <p>Because Campus Connect is an institutional identity system — every account is created from the official MNIT roster, not self-registered — you can't delete your own account directly from within the app. This is intentional: your account is tied to your enrollment record, the same way a physical ID card is.</p>
-    <p>To request that your account and associated data (movement history, leave requests, device binding) be deleted, email <span class="placeholder">[deletion request contact email]</span> from your MNIT email address with your college ID and the request. This applies to:</p>
+    <p>To request that your account and associated data (movement history, leave requests, device binding) be deleted, email <a href="mailto:appadmin@mnit.ac.in">appadmin@mnit.ac.in</a> from your MNIT email address with your college ID and the request. This applies to:</p>
     <ul>
       <li><b>Current students/staff</b> who want their historical movement data removed while remaining on the roster — subject to the retention rules in <a href="#retention">Section 08</a> and any Institute record-keeping requirements for disciplinary or safety records.</li>
       <li><b>Former students/staff</b> whose enrollment has ended — accounts and associated data are deleted as part of the Institute's standard roster offboarding, and you may request this be expedited.</li>
@@ -462,7 +466,7 @@
 
   <section id="children">
     <h2><span class="n">12</span> Age &amp; eligibility</h2>
-    <p>Campus Connect is issued only to enrolled members of MNIT Jaipur (students, staff, and security personnel) via the official Institute roster, and sign-in requires an Institute-issued email account. It is not intended for, and is not directed at, children outside this context.</p>
+    <p>Campus Connect is issued only to enrolled members of MNIT Jaipur (students, staff, and security personnel) via the official Institute roster, and sign-in requires an account created from that roster. It is not intended for, and is not directed at, children outside this context.</p>
   </section>
 
   <section id="changes">
@@ -474,8 +478,8 @@
     <h2><span class="n">14</span> Contact us</h2>
     <p>Questions about this policy or your data can be directed to:</p>
     <p>
-      <span class="placeholder">[Contact name / department]</span><br/>
-      <span class="placeholder">[Contact email]</span><br/>
+      Office of Dean Student Welfare<br/>
+      <a href="mailto:appadmin@mnit.ac.in">appadmin@mnit.ac.in</a> &middot; <a href="mailto:dean.sw@mnit.ac.in">dean.sw@mnit.ac.in</a><br/>
       Malaviya National Institute of Technology Jaipur, JLN Marg, Jaipur, Rajasthan 302017, India
     </p>
   </section>
